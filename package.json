@@ -1,0 +1,57 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "spotify-web-api-node": "^5.0.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^14.1.0",
+    "@commitlint/config-conventional": "^14.1.0",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.11.6",
+    "@types/spotify-web-api-node": "^5.0.4",
+    "@typescript-eslint/eslint-plugin": "^5.3.0",
+    "@typescript-eslint/parser": "^5.3.0",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.1.0",
+    "husky": "^7.0.0",
+    "lint-staged": "^11.2.6",
+    "nodemon": "^2.0.14",
+    "prettier": "^2.4.1",
+    "typescript": "^4.4.4"
+  },
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "tsc -p .",
+    "dev": "nodemon src/index.ts",
+    "commit": "yarn git-cz",
+    "lint-check": "eslint --max-warnings 0 \"./src/**/*.{js,jsx,mjs,ts,tsx}\"",
+    "lint": "eslint --cache --fix \"./src/**/*.{js,jsx,mjs,ts,tsx}\"",
+    "format-check": "prettier --check \"./src/**/*.{js,jsx,json,ts,tsx,mdx}\"",
+    "format": "prettier --write \"./src/**/*.{js,jsx,json,ts,tsx,mdx}\"",
+    "type-check": "tsc --noEmit",
+    "code-quality-check": "yarn lint-check && yarn format-check && yarn type-check",
+    "code-quality-fix": "yarn lint && yarn format",
+    "prepare": "husky install"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "yarn run lint"
+    ],
+    "*.{js,jsx,ts,tsx,json,js}": [
+      "yarn run format"
+    ]
+  }
+}
