@@ -1,10 +1,9 @@
 import express, { Response } from 'express';
 import dotenv from 'dotenv';
+dotenv.config({ path: `${__dirname}/../.env` });
 import cors from 'cors';
 import { authRoutes, userRoutes } from './routes';
 import { verifyToken } from './middlewares';
-
-dotenv.config();
 
 const app = express();
 
