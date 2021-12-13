@@ -21,7 +21,6 @@ router.get('/artists', async (req: any, res: Response) => {
     spotifyApi.setAccessToken(token);
     const data = await spotifyApi.getMyTopArtists({ limit: 10 });
     const topArtists = data.body.items;
-    console.log(topArtists);
     return res.json({ artists: topArtists });
   } catch (error) {
     return res.status(500).json({ msg: 'Internal Server Error' });
